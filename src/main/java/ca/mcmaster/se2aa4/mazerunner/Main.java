@@ -40,6 +40,9 @@ public class Main {
                     }
                     logger.info(mazeConstruction.toString());
                 }
+                if(cmd.hasOption("p")){
+                    ;
+                }
             }else{
                 logger.error("Invalid input.");
             }

@@ -59,7 +59,7 @@ public abstract class Runner {
 
     public void move(){
         switch(this.currentDir){
-            case LEFT:
+            case Direction.LEFT:
                 this.coordinates[0] -= 1;
                 break;
             case Direction.RIGHT:
