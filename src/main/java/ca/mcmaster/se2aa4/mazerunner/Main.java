@@ -16,7 +16,9 @@ public class Main {
         Options options = new Options();
 
         Option maze = new Option("i", "input", true, "input maze filepath");
+        Option path = new Option("p", "input", true, "input maze path for testing");
         options.addOption(maze);
+        options.addOption(path);
         CommandLine cmd;
         CommandLineParser parser = new BasicParser();
 
@@ -24,18 +26,19 @@ public class Main {
         try {
             cmd = parser.parse(options, args);
             if(cmd.hasOption("i")) {
-                logger.trace("**** Reading the maze from file " + args[0]);
-                BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+                logger.trace("**** Reading the maze from file " + args[1]);
+                BufferedReader reader = new BufferedReader(new FileReader(args[1]));
                 String line;
                 while ((line = reader.readLine()) != null) {
+                    StringBuilder mazeConstruction = new StringBuilder();
                     for (int idx = 0; idx < line.length(); idx++) {
                         if (line.charAt(idx) == '#') {
-                            logger.info("WALL ");
+                            mazeConstruction.append("WALL ");
                         } else if (line.charAt(idx) == ' ') {
-                            logger.info("PASS ");
+                            mazeConstruction.append("PASS ");
                         }
                     }
-                    logger.trace(System.lineSeparator());
+                    logger.info(mazeConstruction.toString());
                 }
             }else{
                 logger.error("Invalid input.");
