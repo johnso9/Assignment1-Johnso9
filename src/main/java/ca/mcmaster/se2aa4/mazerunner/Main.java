@@ -26,7 +26,7 @@ public class Main {
         try {
             cmd = parser.parse(options, args);
             if(cmd.hasOption("i")) {
-                logger.trace("**** Reading the maze from file " + args[1]);
+                logger.info("**** Reading the maze from file " + args[1]);
                 BufferedReader reader = new BufferedReader(new FileReader(args[1]));
                 String line;
                 while ((line = reader.readLine()) != null) {
