@@ -5,27 +5,42 @@ import java.io.File;
 import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.commons.cli.*;
 
 public class Main {
 
     private static final Logger logger = LogManager.getLogger();
+    
 
     public static void main(String[] args) {
+        Options options = new Options();
+
+        Option maze = new Option("i", "input", true, "input maze filepath");
+        options.addOption(maze);
+        CommandLine cmd;
+        CommandLineParser parser = new BasicParser();
+
         logger.info("** Starting Maze Runner");
         try {
-            logger.trace("**** Reading the maze from file " + args[0]);
-            BufferedReader reader = new BufferedReader(new FileReader(args[0]));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                for (int idx = 0; idx < line.length(); idx++) {
-                    if (line.charAt(idx) == '#') {
-                        logger.info("WALL ");
-                    } else if (line.charAt(idx) == ' ') {
-                        logger.info("PASS ");
+            cmd = parser.parse(options, args);
+            if(cmd.hasOption("i")) {
+                logger.trace("**** Reading the maze from file " + args[0]);
+                BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    for (int idx = 0; idx < line.length(); idx++) {
+                        if (line.charAt(idx) == '#') {
+                            logger.info("WALL ");
+                        } else if (line.charAt(idx) == ' ') {
+                            logger.info("PASS ");
+                        }
                     }
+                    logger.trace(System.lineSeparator());
                 }
-                logger.trace(System.lineSeparator());
+            }else{
+                logger.error("Invalid input.");
             }
+            
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\"); 
         }
