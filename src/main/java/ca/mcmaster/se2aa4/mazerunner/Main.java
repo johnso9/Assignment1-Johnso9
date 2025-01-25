@@ -14,22 +14,27 @@ public class Main {
 
     public static void main(String[] args) {
         Options options = new Options();
-
-        Option maze = new Option("i", "input", true, "input maze filepath");
+        String instructions = "";
+        boolean hasInstructions = false;
+        Option mazeFile = new Option("i", "input", true, "input maze filepath");
         Option path = new Option("p", "input", true, "input maze path for testing");
-        options.addOption(maze);
+        options.addOption(mazeFile);
         options.addOption(path);
         CommandLine cmd;
         CommandLineParser parser = new BasicParser();
-
+        int rows = 0;
+        int cols = 0;
+        String filePath = "";
         logger.info("** Starting Maze Runner");
         try {
             cmd = parser.parse(options, args);
             if(cmd.hasOption("i")) {
-                logger.info("**** Reading the maze from file " + args[1]);
-                BufferedReader reader = new BufferedReader(new FileReader(args[1]));
+                filePath = cmd.getOptionValue("i");
+                logger.info("**** Reading the maze from file " + filePath);
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
                 String line;
                 while ((line = reader.readLine()) != null) {
+                    cols = line.length();
                     StringBuilder mazeConstruction = new StringBuilder();
                     for (int idx = 0; idx < line.length(); idx++) {
                         if (line.charAt(idx) == '#') {
@@ -39,9 +44,15 @@ public class Main {
                         }
                     }
                     logger.info(mazeConstruction.toString());
+                    rows++;
                 }
+                logger.info(rows + " rows, " + cols + " columns found.");
+                reader.close();
+                
+
                 if(cmd.hasOption("p")){
-                    ;
+                    hasInstructions = true;
+                    instructions = cmd.getOptionValue("p");
                 }
             }else{
                 logger.error("Invalid input.");
@@ -50,7 +61,19 @@ public class Main {
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\"); 
         }
+
         logger.info("**** Computing path");
+
+        Maze maze = new Maze();
+        maze.initializeMaze(rows, cols, filePath);
+
+        maze.findStartEndPositions();
+        logger.info("Start: x, y = " + maze.getStartPosition()[0] + ", " + maze.getStartPosition()[1]);
+        logger.info("End: x, y = " + maze.getFinishPosition()[0] + ", " + maze.getFinishPosition()[1]);
+
+        Runner runner = new InputRunner(Runner.Direction.RIGHT, maze.getStartPosition(), instructions);  //I wanted to name the Runner object Thomas after the Maze Runner book's protagonist but then I'd forget to change it after the MVP
+        runner.solveMaze(maze);
+
         logger.error("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
     }

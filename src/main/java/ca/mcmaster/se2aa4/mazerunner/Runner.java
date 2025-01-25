@@ -12,7 +12,10 @@ import org.apache.logging.log4j.Logger;
 public abstract class Runner {
     
     enum Direction{
-        RIGHT, LEFT, UP, DOWN;
+        RIGHT, 
+        LEFT, 
+        UP, 
+        DOWN;
     }
 
     protected Direction currentDir;

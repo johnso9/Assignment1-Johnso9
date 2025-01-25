@@ -10,13 +10,42 @@ import org.apache.logging.log4j.Logger;
 
 
 public class InputRunner extends Runner {
-    
 
-    public InputRunner(Direction currentDir, int [] coordinates){
+    private String userInput;
+
+    public InputRunner(Direction currentDir, int [] coordinates, String userInput){
         super(currentDir, coordinates);
+        this.userInput = userInput;
+
     }
 
     public String solveMaze(Maze maze){
-        return "Solving maze...";
+        boolean valid = true;
+        int multiplyNext = 1;
+        for(int i=0; i<this.userInput.length(); i++){
+            char step = this.userInput.charAt(i);
+            if(Character.isDigit(step)){
+                multiplyNext = (int)step;
+            }else{ 
+                for(int j=0; j<multiplyNext; j++){
+                switch(step){
+                    case 'F':
+                        this.move();
+                        break;
+                    case 'R':
+                        this.turnRight();
+                        break;
+                    case 'L':
+                        this.turnLeft();
+                        break;
+                }
+            }
+                multiplyNext = 1;
+            }
+            
+
+
+        }
+        return "Valid";
     }
 }
