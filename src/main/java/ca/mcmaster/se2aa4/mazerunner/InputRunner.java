@@ -1,5 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
+import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,32 +21,40 @@ public class InputRunner extends Runner {
     }
 
     public String solveMaze(Maze maze){
-        boolean valid = true;
         int multiplyNext = 1;
         for(int i=0; i<this.userInput.length(); i++){
             char step = this.userInput.charAt(i);
             if(Character.isDigit(step)){
-                multiplyNext = (int)step;
+                multiplyNext = Character.getNumericValue(step);
             }else{ 
                 for(int j=0; j<multiplyNext; j++){
-                switch(step){
-                    case 'F':
-                        this.move();
-                        break;
-                    case 'R':
-                        this.turnRight();
-                        break;
-                    case 'L':
-                        this.turnLeft();
-                        break;
+                    switch(step){
+                        case 'F':
+                            this.move();
+                            if(Arrays.equals(this.coordinates, maze.getFinishPosition())){
+                                return (userInput + ": Valid path - Runner escaped!");
+                            }else if(maze.getCoordinates(this.coordinates[1], this.coordinates[0]) == '#'){
+                                return (userInput + ": Invalid path - Runner hit a wall.");
+                            }
+                            break;
+                        case 'R':
+                            this.turnRight();
+                            break;
+                        case 'L':
+                            this.turnLeft();
+                            break;
+                    }
+                    
                 }
-            }
                 multiplyNext = 1;
             }
-            
-
 
         }
-        return "Valid";
+        if(Arrays.equals(this.coordinates, maze.getFinishPosition())){
+            return (userInput + ": Valid path - Runner escaped!");
+        }else{
+            return (userInput + ": Invalid path - Runner did not reach the end.");
+        }
+        
     }
 }

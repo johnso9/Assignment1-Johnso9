@@ -69,10 +69,10 @@ public abstract class Runner {
                 this.coordinates[0] += 1;
                 break;
             case Direction.UP:
-                this.coordinates[1] += 1;
+                this.coordinates[1] -= 1;
                 break;
             case Direction.DOWN:
-                this.coordinates[1] -= 1;
+                this.coordinates[1] += 1;
                 break;
         }
     }

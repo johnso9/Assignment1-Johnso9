@@ -46,7 +46,7 @@ public class Main {
                     logger.info(mazeConstruction.toString());
                     rows++;
                 }
-                logger.info(rows + " rows, " + cols + " columns found.");
+                logger.info(rows + " rows, " + cols + " columns found.\n");
                 reader.close();
                 
 
@@ -56,25 +56,26 @@ public class Main {
                 }
             }else{
                 logger.error("Invalid input.");
+                logger.error("PATH NOT COMPUTED");
             }
             
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\"); 
+            logger.error("PATH NOT COMPUTED");
         }
 
-        logger.info("**** Computing path");
+        logger.info("**** Computing path\n");
 
         Maze maze = new Maze();
         maze.initializeMaze(rows, cols, filePath);
 
         maze.findStartEndPositions();
         logger.info("Start: x, y = " + maze.getStartPosition()[0] + ", " + maze.getStartPosition()[1]);
-        logger.info("End: x, y = " + maze.getFinishPosition()[0] + ", " + maze.getFinishPosition()[1]);
+        logger.info("End: x, y = " + maze.getFinishPosition()[0] + ", " + maze.getFinishPosition()[1] + "\n");
 
         Runner runner = new InputRunner(Runner.Direction.RIGHT, maze.getStartPosition(), instructions);  //I wanted to name the Runner object Thomas after the Maze Runner book's protagonist but then I'd forget to change it after the MVP
-        runner.solveMaze(maze);
+        logger.info(runner.solveMaze(maze));
 
-        logger.error("PATH NOT COMPUTED");
         logger.info("** End of MazeRunner");
     }
 }
