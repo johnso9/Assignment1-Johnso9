@@ -73,7 +73,13 @@ public class Main {
         logger.info("Start: x, y = " + maze.getStartPosition()[0] + ", " + maze.getStartPosition()[1]);
         logger.info("End: x, y = " + maze.getFinishPosition()[0] + ", " + maze.getFinishPosition()[1] + "\n");
 
-        Runner runner = new InputRunner(Runner.Direction.RIGHT, maze.getStartPosition(), instructions);  //I wanted to name the Runner object Thomas after the Maze Runner book's protagonist but then I'd forget to change it after the MVP
+        Runner runner;
+        if(hasInstructions){
+            runner = new InputRunner(Runner.Direction.RIGHT, maze.getStartPosition(), instructions);
+        }else{
+            runner = new AlgoRunner(Runner.Direction.RIGHT, maze.getStartPosition());
+        }
+        
         logger.info(runner.solveMaze(maze));
 
         logger.info("** End of MazeRunner");
