@@ -16,9 +16,9 @@ import org.apache.logging.log4j.Logger;
 
 
 
-public class AlgoRunner extends Runner {
+public class RightHandRunner extends Runner {
 
-    public AlgoRunner(Direction currentDir, int [] coordinates){
+    public RightHandRunner(Direction currentDir, int [] coordinates){
         super(currentDir, coordinates);
 
     }

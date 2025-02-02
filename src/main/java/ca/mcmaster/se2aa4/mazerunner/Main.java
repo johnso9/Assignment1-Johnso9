@@ -83,7 +83,7 @@ public class Main {
         if(hasInstructions){
             runner = new InputRunner(Runner.Direction.RIGHT, maze.getStartPosition(), instructions);
         }else{
-            runner = new AlgoRunner(Runner.Direction.RIGHT, maze.getStartPosition());
+            runner = new RightHandRunner(Runner.Direction.RIGHT, maze.getStartPosition());
         }
         
         System.out.println((runner.solveMaze(maze)));
