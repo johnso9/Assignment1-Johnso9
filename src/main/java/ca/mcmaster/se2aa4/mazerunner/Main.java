@@ -1,3 +1,9 @@
+/* Owen Johnson
+ * 
+ * Main input flag logic parser, plus initialization of 
+ * needed maze and runner objects depending on given flags.
+ */
+
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;

@@ -1,3 +1,9 @@
+/* Owen Johnson
+ * 
+ * Extends Runner class to override solveMaze with the user-input path. 
+ * Follows user-given instructions, and able to parse canonical or factorized paths.
+ */
+
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.util.Arrays;

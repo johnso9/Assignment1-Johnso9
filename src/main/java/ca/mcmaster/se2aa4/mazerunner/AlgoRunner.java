@@ -1,3 +1,9 @@
+/* Owen Johnson
+ * 
+ * Extends Runner class to override solveMaze with the right-hand algorithm.
+ * Builds a path through using StringBuilder, and returns the completed string.
+ */
+
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.util.Arrays;

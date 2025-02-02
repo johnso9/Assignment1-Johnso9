@@ -1,3 +1,11 @@
+/* Owen Johnson
+ *
+ * Defines Maze object structure, with capability to: 
+ * - create a 2d array of chars from a filepath to initialize the maze
+ * - get the contents of any maze coordinate needed
+ * - initializing start/end positions of the given maze
+ */
+
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;

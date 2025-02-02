@@ -1,3 +1,11 @@
+/* Owen Johnson
+ * 
+ * Abstract class that defines the 4 possible movement 
+ * directions, as well as turning left/right and moving 
+ * forward (corresponding to the current direction).
+ * SolveMaze abstract method to be overwritten with whatever 
+ * method a subclass may have to solve the maze 
+ */
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;
