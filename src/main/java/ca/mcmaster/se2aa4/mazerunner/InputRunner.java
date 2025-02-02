@@ -32,9 +32,9 @@ public class InputRunner extends Runner {
                         case 'F':
                             this.move();
                             if(Arrays.equals(this.coordinates, maze.getFinishPosition())){
-                                return (userInput + ": Valid path - Runner escaped!");
+                                return ("correct path");
                             }else if(maze.getCoordinates(this.coordinates[1], this.coordinates[0]) == '#'){
-                                return (userInput + ": Invalid path - Runner hit a wall.");
+                                return ("incorrect path");
                             }
                             break;
                         case 'R':
@@ -51,9 +51,9 @@ public class InputRunner extends Runner {
 
         }
         if(Arrays.equals(this.coordinates, maze.getFinishPosition())){
-            return (userInput + ": Valid path - Runner escaped!");
+            return ("correct path");
         }else{
-            return (userInput + ": Invalid path - Runner did not reach the end.");
+            return ("incorrect path");
         }
         
     }

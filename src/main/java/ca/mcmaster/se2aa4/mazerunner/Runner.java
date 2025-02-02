@@ -10,14 +10,13 @@ import org.apache.logging.log4j.Logger;
 
 
 public abstract class Runner {
-    
-    enum Direction{
+
+    enum Direction {
         RIGHT, 
         LEFT, 
         UP, 
         DOWN;
     }
-
     protected Direction currentDir;
     protected int[] coordinates = new int[2]; //x,y
 

@@ -118,6 +118,6 @@ public class AlgoRunner extends Runner {
         }else{
             path.append(prevDirection + " ");
         }
-        return ("Path to solve maze: " + path.toString());
+        return (path.toString());
     }
 }
