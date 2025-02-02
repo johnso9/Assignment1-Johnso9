@@ -80,7 +80,7 @@ public class Main {
             runner = new AlgoRunner(Runner.Direction.RIGHT, maze.getStartPosition());
         }
         
-        logger.info(runner.solveMaze(maze));
+        System.out.println((runner.solveMaze(maze)));
 
         logger.info("** End of MazeRunner");
     }

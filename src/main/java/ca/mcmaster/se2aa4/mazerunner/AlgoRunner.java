@@ -63,21 +63,61 @@ public class AlgoRunner extends Runner {
 
     public String solveMaze(Maze maze){
         StringBuilder path = new StringBuilder();
-
+        char prevDirection = 'F';
+        int consecutiveDirections = 0;
         while(!Arrays.equals(this.coordinates, maze.getFinishPosition())){
             if(showBlockRight(maze, currentDir) == ' '){
                 turnRight();
                 move();
-                path.append("R F ");
+                //path.append("RF");
+                if(prevDirection == 'R'){
+                    consecutiveDirections += 1;
+                }else{
+                    if(consecutiveDirections > 1){
+                        path.append(consecutiveDirections + (prevDirection + " "));
+                    }else{
+                        path.append(prevDirection + " ");
+                    }
+                    consecutiveDirections = 1;
+                }
+                path.append("R ");
+                consecutiveDirections = 1;
+                prevDirection = 'F';
             }else if(showBlockAhead(maze, currentDir) == ' '){
                 move();
-                path.append("F ");
+                //path.append("F");
+                if(prevDirection == 'F'){
+                    consecutiveDirections += 1;
+                }else{
+                    if(consecutiveDirections > 1){
+                        path.append(consecutiveDirections + (prevDirection + " "));
+                    }else{
+                        path.append(prevDirection + " ");
+                    }
+                    consecutiveDirections = 1;
+                }
+                prevDirection = 'F';
             }else{
                 turnLeft();
-                path.append("L ");
+                //path.append("L ");
+                if(prevDirection == 'L'){
+                    consecutiveDirections += 1;
+                }else{
+                    if(consecutiveDirections > 1){
+                        path.append(consecutiveDirections + (prevDirection + " "));
+                    }else{
+                        path.append(prevDirection + " ");
+                    }
+                    consecutiveDirections = 1;
+                }
+                prevDirection = 'L';
             }
         }
-
+        if(consecutiveDirections > 1){
+            path.append(consecutiveDirections + (prevDirection + " "));
+        }else{
+            path.append(prevDirection + " ");
+        }
         return ("Path to solve maze: " + path.toString());
     }
 }
