@@ -28,11 +28,19 @@ public class InputRunner extends Runner {
 
     public String solveMaze(Maze maze){
         int multiplyNext = 1;
+        int digitsInARow = 0;
         for(int i=0; i<this.userInput.length(); i++){
             char step = this.userInput.charAt(i);
             if(Character.isDigit(step)){
-                multiplyNext = Character.getNumericValue(step);
+                digitsInARow += 1;
+                if(digitsInARow > 1){
+                    multiplyNext = multiplyNext * 10 + Character.getNumericValue(step);
+                }else{
+                    multiplyNext = Character.getNumericValue(step);
+                }
+                
             }else{ 
+                digitsInARow = 0;
                 for(int j=0; j<multiplyNext; j++){
                     switch(step){
                         case 'F':
