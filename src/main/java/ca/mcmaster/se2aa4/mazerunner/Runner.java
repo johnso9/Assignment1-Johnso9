@@ -82,6 +82,9 @@ public abstract class Runner {
                 this.coordinates[1] += 1;
                 break;
         }
+        if(this.coordinates[0] < 0){
+            this.coordinates[0] = 0; // cannot exit through start of maze, will reset back to left x coordinate if you try to go to, for exmaple, an x coordinate of -1
+        }
     }
 
     public abstract String solveMaze(Maze maze);

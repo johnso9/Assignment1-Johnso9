@@ -37,7 +37,9 @@ public class InputRunner extends Runner {
                     switch(step){
                         case 'F':
                             this.move();
+                            System.out.println("moov");
                             if(Arrays.equals(this.coordinates, maze.getFinishPosition())){
+                                System.out.println("CORRECT");
                                 return ("correct path");
                             }else if(maze.getCoordinates(this.coordinates[1], this.coordinates[0]) == '#'){
                                 return ("incorrect path");
