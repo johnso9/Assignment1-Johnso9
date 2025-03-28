@@ -21,12 +21,15 @@
   </properties>
 
   <dependencies>
-    <!-- JUnit dependency for testing -->
+
+    <!-- JUnit Testing -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.10.2</version>
+      <version>5.10.1</version>
+      <scope>test</scope>
     </dependency>
+
     <!-- To read arguments from command line-->
     <dependency>
       <groupId>commons-cli</groupId>
