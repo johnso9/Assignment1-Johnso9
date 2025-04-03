@@ -21,12 +21,17 @@ public class Maze {
     private char[][] maze;
     private int[] startPos = new int[2];
     private int[] finishPos = new int[2];
+    private int rows;
+    private int cols;
 
 
     public void initializeMaze(int rows, int cols, String filePath){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String line;
+            
+            this.rows = rows;
+            this.cols = cols;
             char[][] contents = new char[rows][cols];
 
 
@@ -50,12 +55,13 @@ public class Maze {
     public void findStartEndPositions(){
         int[] leftPos = new int[2];
         int[] rightPos = new int[2];
-        for(int i=0; i<maze[1].length; i++){
+
+        for(int i=0; i<this.rows-1; i++){
             if(maze[i][0] == ' '){
                 leftPos[0] = 0; //x
                 leftPos[1] = i; //y
             }
-            if(maze[i][maze[0].length-1] == ' '){
+            if(maze[i][this.cols-1] == ' '){
                 rightPos[0] = maze[0].length-1; //x
                 rightPos[1] = i; //y
             }
