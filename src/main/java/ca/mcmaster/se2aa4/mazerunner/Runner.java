@@ -18,13 +18,6 @@ import org.apache.logging.log4j.Logger;
 
 
 public abstract class Runner {
-
-    enum Direction {
-        RIGHT, 
-        LEFT, 
-        UP, 
-        DOWN;
-    }
     protected Direction currentDir;
     protected int[] coordinates = new int[2]; //x,y
 
@@ -34,37 +27,11 @@ public abstract class Runner {
     }
 
     public void turnRight(){
-        switch(this.currentDir){
-            case Direction.LEFT:
-                this.currentDir = Direction.UP;
-                break;
-            case Direction.RIGHT:
-                this.currentDir = Direction.DOWN;
-                break;
-            case Direction.UP:
-                this.currentDir = Direction.RIGHT;
-                break;
-            case Direction.DOWN:
-                this.currentDir = Direction.LEFT;
-                break;
-        }
+        this.currentDir = currentDir.toRight();
     }
 
     public void turnLeft(){
-        switch(this.currentDir){
-            case Direction.LEFT:
-                this.currentDir = Direction.DOWN;
-                break;
-            case Direction.RIGHT:
-                this.currentDir = Direction.UP;
-                break;
-            case Direction.UP:
-                this.currentDir = Direction.LEFT;
-                break;
-            case Direction.DOWN:
-                this.currentDir = Direction.RIGHT;
-                break;
-        }
+        this.currentDir = currentDir.toLeft();
     }
 
     public void move(){

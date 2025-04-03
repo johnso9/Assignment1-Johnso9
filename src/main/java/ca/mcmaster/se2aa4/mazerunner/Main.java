@@ -81,9 +81,9 @@ public class Main {
 
         Runner runner;
         if(hasInstructions){
-            runner = new InputRunner(Runner.Direction.RIGHT, maze.getStartPosition(), instructions);
+            runner = new InputRunner(Direction.RIGHT, maze.getStartPosition(), instructions);
         }else{
-            runner = new RightHandRunner(Runner.Direction.RIGHT, maze.getStartPosition());
+            runner = new RightHandRunner(Direction.RIGHT, maze.getStartPosition());
         }
         
         System.out.println((runner.solveMaze(maze)));

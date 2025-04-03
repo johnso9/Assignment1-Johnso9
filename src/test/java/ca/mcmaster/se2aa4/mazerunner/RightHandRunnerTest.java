@@ -12,7 +12,7 @@ public class RightHandRunnerTest {
         Maze maze = new Maze(); 
         maze.initializeMaze(11, 11, "./examples/small.maz.txt");
         int[] coords = {9,1};
-        RightHandRunner runner = new RightHandRunner(Runner.Direction.DOWN, coords);
+        RightHandRunner runner = new RightHandRunner(Direction.DOWN, coords);
         char block = runner.showBlockAhead(maze, runner.currentDir);
         assertEquals(block, '#');
     }
@@ -22,7 +22,7 @@ public class RightHandRunnerTest {
         Maze maze = new Maze(); 
         maze.initializeMaze(11, 11, "./examples/small.maz.txt");
         int[] coords = {9,1};
-        RightHandRunner runner = new RightHandRunner(Runner.Direction.DOWN, coords);
+        RightHandRunner runner = new RightHandRunner(Direction.DOWN, coords);
         char block = runner.showBlockRight(maze, runner.currentDir);
         assertEquals(block, ' ');
     }
