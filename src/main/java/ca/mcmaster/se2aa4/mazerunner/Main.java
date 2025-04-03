@@ -72,11 +72,9 @@ public class Main {
 
         logger.info("**** Computing path\n");
 
-        Maze maze = new Maze();
-        maze.setMazeSize(rows, cols);
-        maze.initializeMaze(filePath);
+        MazeDirector director = new MazeDirector();
+        Maze maze = director.buildMaze(rows, cols, filePath);
 
-        maze.findStartEndPositions();
         logger.info("Start: x, y = " + maze.getStartPosition()[0] + ", " + maze.getStartPosition()[1]);
         logger.info("End: x, y = " + maze.getFinishPosition()[0] + ", " + maze.getFinishPosition()[1] + "\n");
 

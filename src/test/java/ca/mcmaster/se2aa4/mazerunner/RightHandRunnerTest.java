@@ -9,9 +9,8 @@ public class RightHandRunnerTest {
     
     @Test
     public void testShowBlockAhead() {
-        Maze maze = new Maze(); 
-        maze.setMazeSize(11, 11);
-        maze.initializeMaze("./examples/small.maz.txt");
+        MazeDirector director = new MazeDirector();
+        Maze maze = director.buildMaze(11, 11, "./examples/small.maz.txt");
         int[] coords = {9,1};
         RightHandRunner runner = new RightHandRunner(Direction.DOWN, coords);
         char block = runner.showBlockAhead(maze, runner.currentDir);
@@ -20,9 +19,8 @@ public class RightHandRunnerTest {
 
     @Test
     public void testShowBlockRight() {
-        Maze maze = new Maze();
-        maze.setMazeSize(11, 11);
-        maze.initializeMaze("./examples/small.maz.txt");
+        MazeDirector director = new MazeDirector();
+        Maze maze = director.buildMaze(11, 11, "./examples/small.maz.txt");
         int[] coords = {9,1};
         RightHandRunner runner = new RightHandRunner(Direction.DOWN, coords);
         char block = runner.showBlockRight(maze, runner.currentDir);
