@@ -1,13 +1,12 @@
 /* Owen Johnson
  * 
  * Main input flag logic parser, plus initialization of 
- * needed maze and runner objects depending on given flags.
+ * needed maze and solve strategy depending on given flags.
  */
 
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +18,9 @@ public class Main {
     
 
     public static void main(String[] args) {
+
+        Context context = new Context();
+
         Options options = new Options();
         String instructions = "";
         boolean hasInstructions = false;
@@ -78,14 +80,13 @@ public class Main {
         logger.info("Start: x, y = " + maze.getStartPosition()[0] + ", " + maze.getStartPosition()[1]);
         logger.info("End: x, y = " + maze.getFinishPosition()[0] + ", " + maze.getFinishPosition()[1] + "\n");
 
-        Runner runner;
         if(hasInstructions){
-            runner = new InputRunner(Direction.RIGHT, maze.getStartPosition(), instructions);
+            context.setStrategy(new InputRunner(Direction.RIGHT, maze.getStartPosition(), instructions));
         }else{
-            runner = new RightHandRunner(Direction.RIGHT, maze.getStartPosition());
+            context.setStrategy(new RightHandRunner(Direction.RIGHT, maze.getStartPosition()));
         }
         
-        System.out.println((runner.solveMaze(maze)));
+        System.out.println((context.executeStrategy(maze)));
 
         logger.info("** End of MazeRunner");
     }

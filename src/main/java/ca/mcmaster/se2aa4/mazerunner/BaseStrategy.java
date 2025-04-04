@@ -3,25 +3,15 @@
  * Abstract class that defines the 4 possible movement 
  * directions, as well as turning left/right and moving 
  * forward (corresponding to the current direction).
- * SolveMaze abstract method to be overwritten with whatever 
- * method a subclass may have to solve the maze 
+ * 
  */
 package ca.mcmaster.se2aa4.mazerunner;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-
-
-
-public abstract class Runner {
+public abstract class BaseStrategy{
     protected Direction currentDir;
     protected int[] coordinates = new int[2]; //x,y
 
-    public Runner(Direction currentDir, int [] coordinates){
+    public BaseStrategy(Direction currentDir, int [] coordinates){
         this.currentDir = currentDir;
         this.coordinates = coordinates;
     }
@@ -53,6 +43,4 @@ public abstract class Runner {
             this.coordinates[0] = 0; // cannot exit through start of maze, will reset back to left x coordinate if you try to go to, for exmaple, an x coordinate of -1
         }
     }
-
-    public abstract String solveMaze(Maze maze);
 }

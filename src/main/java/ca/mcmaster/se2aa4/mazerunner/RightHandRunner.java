@@ -1,22 +1,15 @@
 /* Owen Johnson
  * 
- * Extends Runner class to override solveMaze with the right-hand algorithm.
+ * Extends BaseStrategy class to inherit movement.
+ * Implements the Strategy interface which it then overrides with the user-input path solving method. 
  * Builds a path through using StringBuilder, and returns the completed string.
  */
 
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.util.Arrays;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-
-
-
-public class RightHandRunner extends Runner {
+public class RightHandRunner extends BaseStrategy implements RunnerStrategy{
 
     public RightHandRunner(Direction currentDir, int [] coordinates){
         super(currentDir, coordinates);

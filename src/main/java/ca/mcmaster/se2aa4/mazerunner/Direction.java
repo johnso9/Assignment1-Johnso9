@@ -1,3 +1,9 @@
+/* Owen Johnson
+ * 
+ * Contains the 4 possible movement directions, 
+ * as well as methods to get the directions to the left/right of the current direction.
+ * 
+ */
 package ca.mcmaster.se2aa4.mazerunner;
 
 public enum Direction {

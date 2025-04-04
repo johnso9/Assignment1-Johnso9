@@ -1,22 +1,16 @@
 /* Owen Johnson
  * 
- * Extends Runner class to override solveMaze with the user-input path. 
+ * Extends BaseStrategy class to inherit movement.
+ * Implements the Strategy interface which it then overrides with the user-input path solving method. 
  * Follows user-given instructions, and able to parse canonical or factorized paths.
  */
 
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.util.Arrays;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
-
-
-public class InputRunner extends Runner {
+public class InputRunner extends BaseStrategy implements RunnerStrategy{
 
     private String userInput;
 
